@@ -8,11 +8,13 @@ import (
 )
 
 func parseMetaLine(line string) (string, string, error) {
+	line = strings.TrimSpace(line)
 	item := strings.TrimPrefix(line, `[[!meta `)
 	splitItem := strings.Split(item, "=\"")
-	fmt.Println(splitItem)
+	//fmt.Printf("I: %q\n", splitItem)
+	//fmt.Println("one", splitItem[0], "two", splitItem[1])
 	splitItem[1] = strings.TrimSuffix(splitItem[1], "\" ]]")
-	fmt.Println(splitItem[1])
+	//fmt.Println("S:", splitItem[1])
 	if len(splitItem) != 2 {
 		return "", "", fmt.Errorf("Error parsing line")
 	}
