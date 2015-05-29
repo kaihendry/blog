@@ -2,10 +2,10 @@ package main
 
 import (
 	"flag"
+	"html/template"
 	"os"
 	"path/filepath"
 	"strings"
-	"text/template"
 
 	"github.com/kaihendry/blog"
 )

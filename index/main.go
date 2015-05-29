@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"os"
 	"path"
 	"path/filepath"
 	"sort"
 	"strings"
-	"text/template"
 	"time"
 
 	"github.com/kaihendry/blog"
@@ -113,7 +113,7 @@ func main() {
 {{ if gt $i 0 }}</ol>{{end}}
 <h1>{{ .PostDate.Format "2006" }}</h1>
 <ol>{{ end }}
-<li><time datetime="{{ .PostDate.Format "2006-01-02" }}">{{ .PostDate.Format "Jan 2" }}</time>&raquo;<a href="{{ .URL }}">{{ .Title | html }}</a></li>{{end}}
+<li><time datetime="{{ .PostDate.Format "2006-01-02" }}">{{ .PostDate.Format "Jan 2" }}</time>&raquo;<a href="{{ .URL }}">{{ .Title }}</a></li>{{end}}
 </ol>
 <p><a href=https://github.com/kaihendry/natalian/blob/mk/Makefile>Generated with a Makefile</a> and a piece of <a href=https://github.com/kaihendry/natalian/blob/mk/main.go>Golang</a></p>
 </body>
