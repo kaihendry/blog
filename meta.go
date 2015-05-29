@@ -13,11 +13,12 @@ func parseMetaLine(line string) (string, string, error) {
 	splitItem := strings.Split(item, "=\"")
 	//fmt.Printf("I: %q\n", splitItem)
 	//fmt.Println("one", splitItem[0], "two", splitItem[1])
-	splitItem[1] = strings.TrimSuffix(splitItem[1], "\" ]]")
 	//fmt.Println("S:", splitItem[1])
 	if len(splitItem) != 2 {
 		return "", "", fmt.Errorf("Error parsing line")
 	}
+	splitItem[1] = strings.TrimSuffix(splitItem[1], "\"]]")
+	splitItem[1] = strings.TrimSuffix(splitItem[1], "\" ]]")
 	return splitItem[0], splitItem[1], nil
 }
 
@@ -47,7 +48,7 @@ func GetKey(fileName string, keys ...string) map[string]string {
 
 		key, value, err := parseMetaLine(line)
 		if err != nil {
-			fmt.Println(err)
+			fmt.Fprintln(os.Stderr, err)
 			break
 		}
 

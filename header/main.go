@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"os"
+	"path/filepath"
+	"strings"
 	"text/template"
 
 	"github.com/kaihendry/blog"
@@ -18,8 +20,20 @@ func main() {
 
 	flag.Parse()
 	mdwn := flag.Arg(0)
+
+	fName := filepath.Base(mdwn)
+	extName := filepath.Ext(mdwn)
+	bName := fName[:len(fName)-len(extName)]
+
 	m := blog.GetKey(mdwn, "title")
-	p = Post{Title: m["title"]}
+
+	title := m["title"]
+
+	if title == "" {
+		title = strings.Replace(bName, "_", " ", -1)
+	}
+
+	p = Post{Title: title}
 
 	t, err := template.New("foo").Parse(`<!DOCTYPE html>
 <html>
