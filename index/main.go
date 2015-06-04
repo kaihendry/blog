@@ -1,78 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"os"
-	"path"
-	"path/filepath"
 	"sort"
-	"strings"
-	"time"
 
 	"github.com/kaihendry/blog"
 )
-
-type Post struct {
-	PostDate time.Time
-	URL      string
-	Title    string
-}
-
-type Posts struct {
-	Posts []Post
-}
-
-func (p Posts) Len() int {
-	return len(p.Posts)
-}
-
-func (p Posts) Less(i, j int) bool {
-	return p.Posts[i].PostDate.Before(p.Posts[j].PostDate)
-}
-
-func (p Posts) Swap(i, j int) {
-	p.Posts[i], p.Posts[j] = p.Posts[j], p.Posts[i]
-}
-
-var p []Post
-
-func visit(mdwn string, f os.FileInfo, err error) error {
-	if !f.IsDir() {
-		//fmt.Printf("Visiting: %s\n", mdwn)
-
-		if filepath.Ext(mdwn) == ".mdwn" {
-
-			fName := filepath.Base(mdwn)
-			extName := filepath.Ext(mdwn)
-			bName := fName[:len(fName)-len(extName)]
-			url := fmt.Sprintf("/%s/", path.Join(filepath.Dir(mdwn), bName))
-			m := blog.GetKey(mdwn, "title")
-			title := m["title"]
-			if title == "" {
-				title = strings.Replace(bName, "_", " ", -1)
-			}
-
-			var a, b, c int
-			fmt.Sscanf(mdwn, "archives/%d/%d/%d/", &a, &b, &c)
-			date := fmt.Sprintf("%d-%02d-%02d", a, b, c)
-			t, err := time.Parse("2006-01-02", date)
-			//fmt.Println("Date:", t)
-			if err != nil {
-				panic(err)
-			}
-
-			//fmt.Println("Title:", title)
-			//fmt.Println("URL:", url)
-			p = append(p, Post{PostDate: t, URL: url, Title: title})
-
-		} else {
-			fmt.Fprintln(os.Stderr, "Skipping", mdwn)
-		}
-
-	}
-	return nil
-}
 
 func main() {
 
@@ -89,14 +23,10 @@ func main() {
 		},
 	}
 
-	err := filepath.Walk("archives", visit)
-	if err != nil {
-		panic(err)
-	}
-
 	//fmt.Fprintln(os.Stderr, p)
 
-	posts := Posts{p}
+	p := blog.OrderedList()
+	posts := blog.Posts{p}
 	sort.Sort(sort.Reverse(posts))
 	t, err := template.New("foo").Funcs(funcMap).Parse(`<!DOCTYPE html>
 <html>
@@ -104,9 +34,13 @@ func main() {
 <meta charset="utf-8" />
 <link href="/style.css" rel="stylesheet">
 <meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="alternate" type="application/atom+xml" title="Atom feed" href="index.atom">
+<link rel="alternate" type="application/rss+xml" title="RSS feed" href="index.rss">
 <title>Kai Hendry's blog</title>
 </head>
 <body>
+
+<p>A personal blog by <a href="http://hendry.iki.fi/">Kai Hendry</a>. <a href="https://twitter.com/kaihendry">@kaihendry</a></p>
 
 {{ range $i,$e := . }}
 {{ if newYear (.PostDate.Format "2006")}}
@@ -116,6 +50,7 @@ func main() {
 <li><time datetime="{{ .PostDate.Format "2006-01-02" }}">{{ .PostDate.Format "Jan 2" }}</time>&raquo;<a href="{{ .URL }}">{{ .Title }}</a></li>{{end}}
 </ol>
 <p><a href=https://github.com/kaihendry/natalian/blob/mk/Makefile>Generated with a Makefile</a> and a piece of <a href=https://github.com/kaihendry/natalian/blob/mk/main.go>Golang</a></p>
+<p><a href="https://validator.nu/?doc=http%3A%2F%2Fnatalian.org%2F">Valid HTML</a> &amp; <a href="https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fnatalian.org%2F">fast!</a></p>
 </body>
 </html>
 `)
