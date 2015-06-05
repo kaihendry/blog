@@ -1,4 +1,4 @@
-Tools to create my blog: <http://natalian.org>
+Tools to create my blog: <http://natalian.org> Source: <https://github.com/kaihendry/natalian>
 
 Please study the
 [Makefile](https://github.com/kaihendry/natalian/blob/mk/Makefile) for how this
