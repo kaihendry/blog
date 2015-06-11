@@ -40,13 +40,13 @@ func main() {
 </head>
 <body>
 
-<p>A personal blog by <a href="http://hendry.iki.fi/">Kai Hendry</a>. <a href="https://twitter.com/kaihendry">@kaihendry</a></p>
+<p>A personal blog by <a href="http://hendry.iki.fi/">Kai Hendry</a>, born in Natal, South Africa 1978. <a href=http://dabase.com>dabase.com is a more technical blog</a> <a href="https://twitter.com/kaihendry">@kaihendry</a></p>
 
 {{ range $i,$e := . }}
 {{ if newYear (.PostDate.Format "2006")}}
 {{ if gt $i 0 }}</ol>{{end}}
 <h1>{{ .PostDate.Format "2006" }}</h1>
-<ol>{{ end }}
+<ol class="index">{{ end }}
 <li><time datetime="{{ .PostDate.Format "2006-01-02" }}">{{ .PostDate.Format "Jan 2" }}</time>&raquo;<a href="{{ .URL }}">{{ .Title }}</a></li>{{end}}
 </ol>
 <p><a href=https://github.com/kaihendry/natalian/blob/mk/Makefile>Generated with a Makefile</a> and a piece of <a href=https://github.com/kaihendry/blog>Golang</a></p>

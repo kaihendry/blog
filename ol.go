@@ -50,7 +50,7 @@ func visit(mdwn string, f os.FileInfo, err error) error {
 			}
 
 			var a, b, c int
-			fmt.Sscanf(mdwn, "archives/%d/%d/%d/", &a, &b, &c)
+			fmt.Sscanf(mdwn, "%d/%d/%d/", &a, &b, &c)
 			date := fmt.Sprintf("%d-%02d-%02d", a, b, c)
 			t, err := time.Parse("2006-01-02", date)
 			//fmt.Println("Date:", t)
@@ -72,7 +72,7 @@ func visit(mdwn string, f os.FileInfo, err error) error {
 
 func OrderedList() []Post {
 
-	err := filepath.Walk("archives", visit)
+	err := filepath.Walk(".", visit)
 	if err != nil {
 		panic(err)
 	}
