@@ -35,7 +35,7 @@ var p []Post
 
 func visit(mdwn string, f os.FileInfo, err error) error {
 	if !f.IsDir() {
-		//fmt.Printf("Visiting: %s\n", mdwn)
+		// fmt.Printf("Visiting: %s\n", mdwn)
 
 		if filepath.Ext(mdwn) == ".mdwn" {
 

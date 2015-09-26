@@ -42,12 +42,16 @@ func main() {
 <head>
 <meta charset="utf-8" />
 <link href="/style.css" rel="stylesheet">
+<link rel='icon' href='data:;base64,iVBORw0KGgo='>
 <meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/svg+xml" href="http://hendry.iki.fi/kaihendry.svg">
 <link href="http://natalian.org/{{ .URL }}/" rel=canonical>
 <title>{{ .Title }}</title>
 </head>
 <body>
-<h1><a href=/>natalian.org</a><a class=posturl href="/{{ .URL }}/">/<br>{{ .Title }}</a></h1>
+<article>
+<nav><a href=/>natalian.org/</a></nav>
+<h1 id="headline"><a href="/{{ .URL }}/">{{ .Title }}</a></h1>
 `)
 
 	if err != nil {

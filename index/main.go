@@ -40,17 +40,26 @@ func main() {
 </head>
 <body>
 
+<aside>
 <p>A personal blog by <a href="http://hendry.iki.fi/">Kai Hendry</a>, born in Natal, South Africa 1978. <a href=http://dabase.com>dabase.com is a more technical blog</a> <a href="https://twitter.com/kaihendry">@kaihendry</a></p>
+</aside>
 
+<nav>
 {{ range $i,$e := . }}
 {{ if newYear (.PostDate.Format "2006")}}
 {{ if gt $i 0 }}</ol>{{end}}
 <h1>{{ .PostDate.Format "2006" }}</h1>
 <ol class="index">{{ end }}
-<li><time datetime="{{ .PostDate.Format "2006-01-02" }}">{{ .PostDate.Format "Jan 2" }}</time>&raquo;<a href="{{ .URL }}">{{ .Title }}</a></li>{{end}}
+<li><time datetime="{{ .PostDate.Format "2006-01-02" }}">{{ .PostDate.Format "Jan 2" }}</time>
+<a href="{{ .URL }}">{{ .Title }}</a></li>{{end}}
 </ol>
+</nav>
+
+<footer>
 <p><a href=https://github.com/kaihendry/natalian/blob/mk/Makefile>Generated with a Makefile</a> and a piece of <a href=https://github.com/kaihendry/blog>Golang</a></p>
 <p><a href="https://validator.nu/?doc=http%3A%2F%2Fnatalian.org%2F">Valid HTML</a> &amp; <a href="https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fnatalian.org%2F">fast!</a></p>
+</footer>
+
 </body>
 </html>
 `)
