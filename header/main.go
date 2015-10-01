@@ -44,13 +44,13 @@ func main() {
 <link href="/style.css" rel="stylesheet">
 <link rel='icon' href='data:;base64,iVBORw0KGgo='>
 <meta name=viewport content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/svg+xml" href="http://hendry.iki.fi/kaihendry.svg">
+<link rel="icon" type="image/svg+xml" href="http://hendry.iki.fi/kaihendry.svg">
 <link href="http://natalian.org/{{ .URL }}/" rel=canonical>
 <title>{{ .Title }}</title>
 </head>
 <body>
-<article>
 <nav><a href=/>natalian.org/</a></nav>
+<article>
 <h1 id="headline"><a href="/{{ .URL }}/">{{ .Title }}</a></h1>
 `)
 

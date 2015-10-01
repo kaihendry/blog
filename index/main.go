@@ -41,7 +41,7 @@ func main() {
 <body>
 
 <aside>
-<p>A personal blog by <a href="http://hendry.iki.fi/">Kai Hendry</a>, born in Natal, South Africa 1978. <a href=http://dabase.com>dabase.com is a more technical blog</a> <a href="https://twitter.com/kaihendry">@kaihendry</a></p>
+<p><span id=greet></span> <dfn><abbr title="An Anglo African of the East Coast of South Africa">natalian</abbr>.org</dfn> is a personal blog by <a href="http://hendry.iki.fi/">Kai Hendry</a>, born in Natal, South Africa 1978. <a href=http://dabase.com>dabase.com is a more technical blog</a> <a href="https://twitter.com/kaihendry">@kaihendry</a></p>
 </aside>
 
 <nav>
@@ -60,6 +60,7 @@ func main() {
 <p><a href="https://validator.nu/?doc=http%3A%2F%2Fnatalian.org%2F">Valid HTML</a> &amp; <a href="https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fnatalian.org%2F">fast!</a></p>
 </footer>
 
+<script src=/stats.js></script>
 </body>
 </html>
 `)
