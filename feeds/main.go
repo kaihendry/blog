@@ -26,11 +26,12 @@ func main() {
 	posts := blog.Posts{p}
 	sort.Sort(sort.Reverse(posts))
 
-	for _, v := range p {
+	for _, v := range p[:20] {
 		i := feeds.Item{
-			Title:   v.Title,
-			Link:    &feeds.Link{Href: "http://natalian.org" + v.URL},
-			Created: v.PostDate,
+			Title:       v.Title,
+			Link:        &feeds.Link{Href: "http://natalian.org" + v.URL},
+			Description: v.Description,
+			Created:     v.PostDate,
 		}
 		feed.Add(&i)
 	}

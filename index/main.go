@@ -34,8 +34,11 @@ func main() {
 <meta charset="utf-8" />
 <link href="/style.css" rel="stylesheet">
 <meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/svg+xml" href="http://hendry.iki.fi/kaihendry.svg">
+<meta name="description" content="Kai Hendry's personal blog">
+<meta property="og:description" content="Kai Hendry's personal blog">
+<meta property="og:image" content="https://graph.facebook.com/664018124/picture?type=large">
 <link rel="alternate" type="application/atom+xml" title="Atom feed" href="index.atom">
-<link rel="alternate" type="application/rss+xml" title="RSS feed" href="index.rss">
 <title>Kai Hendry's blog</title>
 </head>
 <body>
