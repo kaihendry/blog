@@ -46,7 +46,7 @@ func main() {
 <link href="/style.css" rel="stylesheet">
 <link rel='icon' href='data:;base64,iVBORw0KGgo='>
 <meta name=viewport content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="http://hendry.iki.fi/kaihendry.svg">
+<meta name="twitter:creator" content="@kaihendry">
 <link href="http://natalian.org/{{ .URL }}/" rel=canonical>
 {{if .Description}}<meta name="description" content="{{ .Description }}">{{end}}
 <title>{{ .Title }}</title>
