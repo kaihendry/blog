@@ -29,7 +29,7 @@ func main() {
 	for _, v := range p {
 		i := feeds.Item{
 			Title:   v.Title,
-			Link:    &feeds.Link{Href: "http://natalian.org" + v.URL},
+			Link:    &feeds.Link{Href: "https://natalian.org" + v.URL},
 			Created: v.PostDate,
 		}
 		feed.Add(&i)

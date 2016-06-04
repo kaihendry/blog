@@ -55,12 +55,14 @@ func visit(mdwn string, f os.FileInfo, err error) error {
 			t, err := time.Parse("2006-01-02", date)
 			//fmt.Println("Date:", t)
 			if err != nil {
-				panic(err)
+				fmt.Fprintln(os.Stderr, "Skipping, incorrect structure", mdwn)
+				return nil
+			} else {
+				p = append(p, Post{PostDate: t, URL: url, Title: title})
 			}
 
 			//fmt.Println("Title:", title)
 			//fmt.Println("URL:", url)
-			p = append(p, Post{PostDate: t, URL: url, Title: title})
 
 		} else {
 			fmt.Fprintln(os.Stderr, "Skipping", mdwn)
