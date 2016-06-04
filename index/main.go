@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"os"
 	"sort"
@@ -23,8 +24,6 @@ func main() {
 		},
 	}
 
-	//fmt.Fprintln(os.Stderr, p)
-
 	p := blog.OrderedList()
 	posts := blog.Posts{p}
 	sort.Sort(sort.Reverse(posts))
@@ -34,8 +33,10 @@ func main() {
 <meta charset="utf-8" />
 <link href="/style.css" rel="stylesheet">
 <meta name=viewport content="width=device-width, initial-scale=1">
+<meta name="description" content="Kai Hendry's personal blog">
+<meta property="og:description" content="Kai Hendry's personal blog">
+<meta property="og:image" content="https://graph.facebook.com/664018124/picture?type=large">
 <link rel="alternate" type="application/atom+xml" title="Atom feed" href="index.atom">
-<link rel="alternate" type="application/rss+xml" title="RSS feed" href="index.rss">
 <title>Kai Hendry's blog</title>
 </head>
 <body>
@@ -60,7 +61,7 @@ func main() {
 <p><a href="https://validator.nu/?doc=http%3A%2F%2Fnatalian.org%2F">Valid HTML</a> &amp; <a href="https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fnatalian.org%2F">fast!</a></p>
 </footer>
 
-<script src=/stats.js></script>
+<script async src=/stats.js></script>
 </body>
 </html>
 `)
@@ -72,6 +73,7 @@ func main() {
 	err = t.Execute(os.Stdout, p)
 
 	if err != nil {
+		fmt.Println("over here")
 		panic(err)
 	}
 

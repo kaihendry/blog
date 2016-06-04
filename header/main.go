@@ -11,8 +11,9 @@ import (
 )
 
 type Post struct {
-	Title string
-	URL   string
+	Title       string
+	URL         string
+	Description string
 }
 
 var p Post
@@ -28,6 +29,7 @@ func main() {
 	url := mdwn[:len(mdwn)-len(extName)]
 
 	m := blog.GetKey(mdwn, "title")
+	desc := blog.GetKey(mdwn, "description")["description"]
 
 	title := m["title"]
 
@@ -35,7 +37,7 @@ func main() {
 		title = strings.Replace(bName, "_", " ", -1)
 	}
 
-	p = Post{Title: title, URL: url}
+	p = Post{Title: title, URL: url, Description: desc}
 
 	t, err := template.New("foo").Parse(`<!DOCTYPE html>
 <html>
@@ -44,8 +46,9 @@ func main() {
 <link href="/style.css" rel="stylesheet">
 <link rel='icon' href='data:;base64,iVBORw0KGgo='>
 <meta name=viewport content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="http://hendry.iki.fi/kaihendry.svg">
+<meta name="twitter:creator" content="@kaihendry">
 <link href="http://natalian.org/{{ .URL }}/" rel=canonical>
+{{if .Description}}<meta name="description" content="{{ .Description }}">{{end}}
 <title>{{ .Title }}</title>
 </head>
 <body>

@@ -2,6 +2,7 @@ package main
 
 import (
 	"io/ioutil"
+	"log"
 	"sort"
 	"time"
 
@@ -26,11 +27,15 @@ func main() {
 	posts := blog.Posts{p}
 	sort.Sort(sort.Reverse(posts))
 
-	for _, v := range p {
+	for _, v := range p[:20] {
+		if v.Description == "" {
+			log.Println("Warning:", v.URL, "has no tl;dr")
+		}
 		i := feeds.Item{
-			Title:   v.Title,
-			Link:    &feeds.Link{Href: "https://natalian.org" + v.URL},
-			Created: v.PostDate,
+			Title:       v.Title,
+			Link:        &feeds.Link{Href: "https://natalian.org" + v.URL},
+			Description: v.Description,
+			Created:     v.PostDate,
 		}
 		feed.Add(&i)
 	}

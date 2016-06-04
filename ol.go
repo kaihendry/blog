@@ -10,9 +10,10 @@ import (
 )
 
 type Post struct {
-	PostDate time.Time
-	URL      string
-	Title    string
+	PostDate    time.Time
+	URL         string
+	Title       string
+	Description string
 }
 
 type Posts struct {
@@ -43,7 +44,10 @@ func visit(mdwn string, f os.FileInfo, err error) error {
 			extName := filepath.Ext(mdwn)
 			bName := fName[:len(fName)-len(extName)]
 			url := fmt.Sprintf("/%s/", path.Join(filepath.Dir(mdwn), bName))
+
+			desc := GetKey(mdwn, "description")["description"]
 			m := GetKey(mdwn, "title")
+
 			title := m["title"]
 			if title == "" {
 				title = strings.Replace(bName, "_", " ", -1)
@@ -56,18 +60,13 @@ func visit(mdwn string, f os.FileInfo, err error) error {
 			//fmt.Println("Date:", t)
 			if err != nil {
 				fmt.Fprintln(os.Stderr, "Skipping, incorrect structure", mdwn)
-				return nil
 			} else {
-				p = append(p, Post{PostDate: t, URL: url, Title: title})
+				//fmt.Println("Title:", title)
+				//fmt.Println("URL:", url)
+
+				p = append(p, Post{PostDate: t, URL: url, Title: title, Description: desc})
 			}
-
-			//fmt.Println("Title:", title)
-			//fmt.Println("URL:", url)
-
-		} else {
-			fmt.Fprintln(os.Stderr, "Skipping", mdwn)
 		}
-
 	}
 	return nil
 }
