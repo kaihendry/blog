@@ -16,25 +16,24 @@ type Post struct {
 	Description string
 }
 
-type Posts struct {
-	Posts []Post
-}
+type Posts []Post
+
+var p Posts
 
 func (p Posts) Len() int {
-	return len(p.Posts)
+	return len(p)
 }
 
 func (p Posts) Less(i, j int) bool {
-	return p.Posts[i].PostDate.Before(p.Posts[j].PostDate)
+	return p[i].PostDate.Before(p[j].PostDate)
 }
 
 func (p Posts) Swap(i, j int) {
-	p.Posts[i], p.Posts[j] = p.Posts[j], p.Posts[i]
+	p[i], p[j] = p[j], p[i]
 }
 
-var p []Post
-
 func visit(mdwn string, f os.FileInfo, err error) error {
+
 	if !f.IsDir() {
 		// fmt.Printf("Visiting: %s\n", mdwn)
 
@@ -71,12 +70,13 @@ func visit(mdwn string, f os.FileInfo, err error) error {
 	return nil
 }
 
-func OrderedList() []Post {
+func OrderedList() Posts {
 
 	err := filepath.Walk(".", visit)
 	if err != nil {
 		panic(err)
 	}
+
 	return p
 
 }

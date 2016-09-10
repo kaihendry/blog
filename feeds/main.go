@@ -22,12 +22,10 @@ func main() {
 		Created:     now,
 	}
 
-	p := blog.OrderedList()
-
-	posts := blog.Posts{p}
+	posts := blog.OrderedList()
 	sort.Sort(sort.Reverse(posts))
 
-	for _, v := range p[:20] {
+	for _, v := range posts[:20] {
 		if v.Description == "" {
 			log.Println("Warning:", v.URL, "has no tl;dr")
 		}

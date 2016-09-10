@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"os"
 	"sort"
@@ -24,11 +23,10 @@ func main() {
 		},
 	}
 
-	p := blog.OrderedList()
-	posts := blog.Posts{p}
+	posts := blog.OrderedList()
 	sort.Sort(sort.Reverse(posts))
 	t, err := template.New("foo").Funcs(funcMap).Parse(`<!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
 <meta charset="utf-8" />
 <link href="/style.css" rel="stylesheet">
@@ -70,10 +68,9 @@ func main() {
 		panic(err)
 	}
 
-	err = t.Execute(os.Stdout, p)
+	err = t.Execute(os.Stdout, posts)
 
 	if err != nil {
-		fmt.Println("over here")
 		panic(err)
 	}
 

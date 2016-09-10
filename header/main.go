@@ -40,7 +40,7 @@ func main() {
 	p = Post{Title: title, URL: url, Description: desc}
 
 	t, err := template.New("foo").Parse(`<!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
 <meta charset="utf-8" />
 <link href="/style.css" rel="stylesheet">
