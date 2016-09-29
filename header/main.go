@@ -39,15 +39,9 @@ func main() {
 
 	p = Post{Title: title, URL: url, Description: desc}
 
-	t, err := template.New("foo").Parse(`<!DOCTYPE html>
-<html lang=en>
-<head>
-<meta charset="utf-8" />
-<link href="/style.css" rel="stylesheet">
-<link rel='icon' href='data:;base64,iVBORw0KGgo='>
-<meta name=viewport content="width=device-width, initial-scale=1">
-<meta name="twitter:creator" content="@kaihendry">
-<link href="http://natalian.org/{{ .URL }}/" rel=canonical>
+	t, err := template.New("metacrap").Parse(blog.Metacrap)
+	t, err = t.New("foo").Parse(`{{ template "metacrap" }}
+<link href="https://natalian.org/{{ .URL }}/" rel=canonical>
 {{if .Description}}<meta name="description" content="{{ .Description }}">{{end}}
 <title>{{ .Title }}</title>
 </head>
@@ -56,7 +50,6 @@ func main() {
 <article>
 <h1 id="headline"><a href="/{{ .URL }}/">{{ .Title }}</a></h1>
 `)
-
 	if err != nil {
 		panic(err)
 	}

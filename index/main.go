@@ -25,15 +25,9 @@ func main() {
 
 	posts := blog.OrderedList()
 	sort.Sort(sort.Reverse(posts))
-	t, err := template.New("foo").Funcs(funcMap).Parse(`<!DOCTYPE html>
-<html lang=en>
-<head>
-<meta charset="utf-8" />
-<link href="/style.css" rel="stylesheet">
-<meta name=viewport content="width=device-width, initial-scale=1">
+	t, err := template.New("metacrap").Parse(blog.Metacrap)
+	t, err = t.New("foo").Funcs(funcMap).Parse(`{{ template "metacrap" }}
 <meta name="description" content="Kai Hendry's personal blog">
-<meta property="og:description" content="Kai Hendry's personal blog">
-<meta property="og:image" content="https://graph.facebook.com/664018124/picture?type=large">
 <link rel="alternate" type="application/atom+xml" title="Atom feed" href="index.atom">
 <title>Kai Hendry's blog</title>
 </head>

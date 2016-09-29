@@ -7,6 +7,19 @@ import (
 	"strings"
 )
 
+var Metacrap = `<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset="utf-8" />
+<link href="/style.css" rel="stylesheet">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<meta name="twitter:creator" content="@kaihendry">
+<meta name='mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='application-name' content='natalian'>
+<meta name='apple-mobile-web-app-status-bar-style' content='gold'>
+`
+
 func parseMetaLine(line string) (string, string, error) {
 	line = strings.TrimSpace(line)
 	item := strings.TrimPrefix(line, `[[!meta `)
