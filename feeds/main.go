@@ -16,7 +16,7 @@ func main() {
 	now := time.Now()
 	feed := &feeds.Feed{
 		Title:       "Kai Hendry's blog",
-		Link:        &feeds.Link{Href: "http://natalian.org/"},
+		Link:        &feeds.Link{Href: "https://natalian.org/"},
 		Description: "Anglo African linux geek living in Singapore",
 		Author:      &author,
 		Created:     now,

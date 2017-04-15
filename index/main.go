@@ -34,7 +34,7 @@ func main() {
 <body>
 
 <aside>
-<p><span id=greet></span> <dfn><abbr title="An Anglo African of the East Coast of South Africa">natalian</abbr>.org</dfn> is a personal blog by <a href="http://hendry.iki.fi/">Kai Hendry</a>, born in Natal, South Africa 1978. <a href=http://dabase.com>dabase.com is my more technical blog</a>. Please subscribe to my <a href="https://www.youtube.com/user/kaihendry">Youtube channel</a> &amp; follow <a href="https://twitter.com/kaihendry">@kaihendry</a>.</p>
+<p><span id=greet></span> <dfn><abbr title="An Anglo African of the East Coast of South Africa">natalian</abbr>.org</dfn> is a personal blog by <a href="https://hendry.iki.fi/">Kai Hendry</a>, born in Natal, South Africa 1978. <a href=http://dabase.com>dabase.com is my more technical blog</a>. Please subscribe to my <a href="https://www.youtube.com/user/kaihendry">Youtube channel</a> &amp; follow <a href="https://twitter.com/kaihendry">@kaihendry</a>.</p>
 </aside>
 
 <nav>

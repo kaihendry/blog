@@ -26,10 +26,11 @@ func main() {
 
 	t, err := template.New("foo").Parse(`
 	<fieldset><legend>Advertisement</legend><p>If you like this, you might like
-the opensource software <a href=https://webconverger.com/>Web kiosk
-software</a> I develop. It's very useful in public and business environments
-for ease of deployment and privacy.</p></fieldset>
-
+	the <a href=https://webconverger.com/>stateless Web kiosk software</a> I
+	develop. Webconverger typically replaces Windows on PCs and is deployed in
+	public and business environments for ease of deployment and privacy. Once
+	installed it auto-updates making it painless to maintain. Try it where you
+	exclusively use the only viable open platform... the Web!</p></fieldset>
 
 	<footer><p><a href=https://github.com/kaihendry/natalian/blob/mk/{{ .Mdwn }}>Source</a></p>
 	<p><a href="mailto:hendry+blog@iki.fi?subject=natalian.org/{{ .URL }}%20feedback">Email</a></p>

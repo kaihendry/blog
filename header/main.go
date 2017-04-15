@@ -48,7 +48,7 @@ func main() {
 <body>
 <nav><a href=/>natalian.org/</a></nav>
 <article>
-<h1 id="headline"><a href="/{{ .URL }}/">{{ .Title }}</a></h1>
+<h1 class="headline"><a href="/{{ .URL }}/">{{ .Title }}</a></h1>
 `)
 	if err != nil {
 		panic(err)
