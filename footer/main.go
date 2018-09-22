@@ -34,7 +34,7 @@ func main() {
 
 	<footer><p><a href=https://github.com/kaihendry/natalian/blob/mk/{{ .Mdwn }}>Source</a></p>
 	<p><a href="mailto:hendry+blog@iki.fi?subject=natalian.org/{{ .URL }}%20feedback">Email</a></p>
-	<p><a href="https://validator.nu/?doc=http://natalian.org/{{ .URL }}">Validate</a></p>
+	<p><a href="https://validator.w3.org/nu/?doc=https://natalian.org/{{ .URL }}">Validate</a></p>
 
 	</footer>
 	</article>
