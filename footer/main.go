@@ -34,9 +34,7 @@ func main() {
 	<div id="error-message"></div>
 	
 	<script>
-	  var stripe = Stripe('pk_live_ZaFSnYjHJihqC6qadpgHLOgl', {
-		betas: ['checkout_beta_4']
-	  });
+	  var stripe = Stripe('pk_live_ZaFSnYjHJihqC6qadpgHLOgl');
 	
 	  var checkoutButton = document.getElementById('checkout-button');
 	  checkoutButton.addEventListener('click', function () {
