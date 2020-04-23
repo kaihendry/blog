@@ -25,7 +25,7 @@ func main() {
 	p = Post{URL: bName, Mdwn: mdwn}
 
 	t, err := template.New("foo").Parse(`
-	<fieldset><legend>Found any of my content useful?</legend>
+	<fieldset><legend>Found any of my content interesting or useful?</legend>
 	<!-- Load Stripe.js on your website. -->
 	<script src="https://js.stripe.com/v3"></script>
 	
@@ -48,6 +48,8 @@ func main() {
 		  // tab between form submission and the redirect.
 		  successUrl: window.location.protocol + '//natalian.org/thank-you.html',
 		  cancelUrl: window.location.protocol + '//natalian.org/oh-no.html',
+		  submitType: 'donate',
+		  clientReferenceId: window.location.href
 		})
 		.then(function (result) {
 		  if (result.error) {
