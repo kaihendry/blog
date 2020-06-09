@@ -62,10 +62,10 @@ func main() {
 	
 	</fieldset>
 
-	<footer><p><a href=https://github.com/kaihendry/natalian/blob/mk/{{ .Mdwn }}>Source</a></p>
-	<p><a href="mailto:hendry+blog@iki.fi?subject=natalian.org/{{ .URL }}%20feedback">Email</a></p>
-	<p><a href="https://validator.w3.org/nu/?doc=https://natalian.org/{{ .URL }}">Validate</a></p>
-
+	<footer>
+	<nav><a href="https://github.com/kaihendry/natalian/blob/mk/{{ .Mdwn }}">Source</a> /
+	<a href="mailto:hendry+blog@iki.fi?subject=natalian.org/{{ .URL }}%20feedback">Email</a> /
+	<a href="https://validator.w3.org/nu/?doc=https://natalian.org/{{ .URL }}">Validate</a></nav>
 	</footer>
 	</article>
 

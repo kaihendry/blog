@@ -11,7 +11,7 @@ var Metacrap = `<!DOCTYPE html>
 <html lang=en>
 <head>
 <meta charset="utf-8" />
-<link href="/style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://newcss.net/lite.css">
 <meta name=viewport content="width=device-width, initial-scale=1">
 <meta name="twitter:creator" content="@kaihendry">
 <meta name='mobile-web-app-capable' content='yes'>
