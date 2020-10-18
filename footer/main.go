@@ -26,20 +26,19 @@ func main() {
 
 	t, err := template.New("foo").Parse(`
 	<fieldset><legend>Found any of my content interesting or useful?</legend>
-	<!-- Load Stripe.js on your website. -->
-	<script src="https://js.stripe.com/v3"></script>
-	
+
 	<!-- Create a button that your customers click to complete their purchase. -->
 	<button id="checkout-button" class="pulse" role="link">Buy me a coffee ☕</button>
 	<div id="error-message"></div>
 	
 	<script>
-	  var stripe = Stripe('pk_live_ZaFSnYjHJihqC6qadpgHLOgl');
-	
 	  var checkoutButton = document.getElementById('checkout-button');
 	  checkoutButton.addEventListener('click', function () {
 		// When the customer clicks on the button, redirect
 		// them to Checkout.
+
+		var stripe = Stripe('pk_live_ZaFSnYjHJihqC6qadpgHLOgl');
+
 		stripe.redirectToCheckout({
 		  items: [{sku: 'sku_EkCsw8Oco9oUMQ', quantity: 1}],
 	
@@ -69,7 +68,8 @@ func main() {
 	</footer>
 	</article>
 
-<script async src=/stats.js></script>
+<script async src="https://js.stripe.com/v3"></script>
+<script async src="/stats.js"></script>
 </body>
 </html>
 `)

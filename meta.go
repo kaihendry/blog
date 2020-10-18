@@ -12,6 +12,10 @@ var Metacrap = `<!DOCTYPE html>
 <head>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="https://newcss.net/lite.css">
+<style>
+/* https://github.com/xz/new.css/issues/38#issuecomment-657548376 */
+table { word-break: initial }
+</style>
 <meta name=viewport content="width=device-width, initial-scale=1">
 <meta name="twitter:creator" content="@kaihendry">
 <meta name='mobile-web-app-capable' content='yes'>
