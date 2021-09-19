@@ -62,7 +62,7 @@ func main() {
 	</fieldset>
 
 	<footer>
-	<nav><a href="https://github.com/kaihendry/natalian/blob/mk/{{ .Mdwn }}">Source</a> /
+	<nav><a href="https://github.com/kaihendry/natalian/blob/main/{{ .Mdwn }}">Source</a> /
 	<a href="mailto:hendry+blog@iki.fi?subject=natalian.org/{{ .URL }}%20feedback">Email</a> /
 	<a href="https://validator.w3.org/nu/?doc=https://natalian.org/{{ .URL }}">Validate</a></nav>
 	</footer>
