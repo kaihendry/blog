@@ -25,7 +25,12 @@ func main() {
 	posts := blog.OrderedList()
 	sort.Sort(sort.Reverse(posts))
 
-	for _, v := range posts[:20] {
+	maximum := 20
+        if (maximum > len(posts)) {
+                maximum = len(posts)
+        }
+		
+	for _, v := range posts[:maximum] {
 		if v.Description == "" {
 			log.Println("Warning:", v.URL, "has no tl;dr")
 		}
